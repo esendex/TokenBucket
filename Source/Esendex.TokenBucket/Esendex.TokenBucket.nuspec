@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>esendexdev,bbeck</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/esendex/TokenBucket/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/esendex/TokenBucket</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2015</copyright>
+    <tags>TokenBucket LeakyBucket FlowControl</tags>
+  </metadata>
+</package>
