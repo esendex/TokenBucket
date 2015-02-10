@@ -10,7 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{8A0ECBB0-D56E-4742-BC68-9A1C840E28C3}"
 	ProjectSection(SolutionItems) = preProject
 		..\LICENSE = ..\LICENSE
-		..\README.markdown = ..\README.markdown
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global

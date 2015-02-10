@@ -80,7 +80,7 @@ namespace Esendex.TokenBucket
         {
             public void Sleep()
             {
-                Thread.SpinWait(1);
+                Thread.Sleep(0);
             }
         }
 
@@ -90,7 +90,7 @@ namespace Esendex.TokenBucket
         {
             public void Sleep()
             {
-                // NOP
+                Thread.SpinWait(1);
             }
         }
 
