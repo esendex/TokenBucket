@@ -5,8 +5,8 @@ namespace Esendex.TokenBucket.Tests
 {
     public class FixedIntervalRefillStrategyTest
     {
-        private const long N = 5; // 5 tokens
-        private readonly TimeSpan _p = TimeSpan.FromSeconds(10);
+        private const long NumberOfTokens = 5;
+        private readonly TimeSpan _period = TimeSpan.FromSeconds(10);
 
         private MockTicker _ticker;
         private FixedIntervalRefillStrategy _strategy;
@@ -15,13 +15,13 @@ namespace Esendex.TokenBucket.Tests
         public void SetUp()
         {
             _ticker = new MockTicker();
-            _strategy = new FixedIntervalRefillStrategy(_ticker, N, _p);
+            _strategy = new FixedIntervalRefillStrategy(_ticker, NumberOfTokens, _period);
         }
 
         [Test]
         public void FirstRefill()
         {
-            Assert.AreEqual(N, _strategy.Refill());
+            Assert.AreEqual(NumberOfTokens, _strategy.Refill());
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Esendex.TokenBucket.Tests
             _strategy.Refill();
 
             // Another refill shouldn't come for P units.
-            for (var i = 0; i < _p.TotalSeconds - 1; i++)
+            for (var i = 0; i < _period.TotalSeconds - 1; i++)
             {
                 _ticker.Advance(TimeSpan.FromSeconds(1));
                 Assert.AreEqual(0, _strategy.Refill());
@@ -42,9 +42,29 @@ namespace Esendex.TokenBucket.Tests
         {
             for (var i = 0; i < 10; i++)
             {
-                Assert.AreEqual(N, _strategy.Refill());
-                _ticker.Advance(_p);
+                Assert.AreEqual(NumberOfTokens, _strategy.Refill());
+                _ticker.Advance(_period);
             }
+        }
+
+        [Test]
+        public void RefillMultipleTokensWhenMultiplePeriodsElapse()
+        {
+            _ticker.Advance(TimeSpan.FromSeconds(_period.TotalSeconds*3));
+            Assert.That(_strategy.Refill(), Is.EqualTo(NumberOfTokens*3));
+
+            _ticker.Advance(_period);
+            Assert.That(_strategy.Refill(), Is.EqualTo(NumberOfTokens));
+        }
+
+        [Test]
+        public void RefillAtFixedRateWhenCalledWithInconsistentRate()
+        {
+            _ticker.Advance(TimeSpan.FromSeconds(_period.TotalSeconds/2));
+            Assert.That(_strategy.Refill(), Is.EqualTo(NumberOfTokens));
+
+            _ticker.Advance(TimeSpan.FromSeconds(_period.TotalSeconds/2));
+            Assert.That(_strategy.Refill(), Is.EqualTo(NumberOfTokens));
         }
 
         private sealed class MockTicker : Ticker
