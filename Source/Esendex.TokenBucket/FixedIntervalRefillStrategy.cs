@@ -36,8 +36,9 @@ namespace Esendex.TokenBucket
                 {
                     return 0;
                 }
-                _nextRefillTime = now + _periodInTicks;
-                return _numTokens;
+                var refillAmount = Math.Max((now - _nextRefillTime) / _periodInTicks, 1);
+                _nextRefillTime += _periodInTicks * refillAmount;
+                return _numTokens * refillAmount;
             }
         }
     }
