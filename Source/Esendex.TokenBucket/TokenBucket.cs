@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Esendex.TokenBucket
 {
@@ -79,6 +80,15 @@ namespace Esendex.TokenBucket
         }
 
         /// <summary>
+        /// Consume a single token from the bucket asynchronously. This method does not block
+        /// <returns>A task that returns once a token has been consumed</returns>
+        /// </summary>
+        public Task ConsumeAsync()
+        {
+            return ConsumeAsync(1);
+        }
+
+        /// <summary>
         /// Consumes multiple tokens from the bucket.  If enough tokens are not currently available then this method will block
         /// </summary>
         /// <param name="numTokens">The number of tokens to consume from the bucket, must be a positive number.</param>
@@ -91,6 +101,16 @@ namespace Esendex.TokenBucket
 
                 _sleepStrategy.Sleep();
             }
+        }
+
+        /// <summary>
+        /// Consume multiple tokens from the bucket asynchronously. This method does not block
+        /// <param name="numTokens">The number of tokens to consume from the bucket, must be a positive number.</param>
+        /// <returns>A task that returns once the requested tokens have been consumed</returns>
+        /// </summary>
+        public Task ConsumeAsync(long numTokens)
+        {
+            return Task.Factory.StartNew(() => Consume(numTokens));
         }
     }
 }
