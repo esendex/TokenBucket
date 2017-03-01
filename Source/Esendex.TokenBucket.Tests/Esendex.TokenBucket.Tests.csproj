@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FixedIntervalRefillStrategyTests.cs" />
+    <Compile Include="TokenBucketRefillTests.cs" />
     <Compile Include="TokenBucketsBuilderTests.cs" />
     <Compile Include="TokenBucketTests.cs" />
   </ItemGroup>
