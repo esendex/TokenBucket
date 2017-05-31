@@ -49,14 +49,6 @@ namespace Esendex.TokenBucket
                 return WithSleepStrategy(YieldingSleepStrategyInstance);
             }
 
-            /// <summary>
-            /// Use a sleep strategy that will not yield the CPU to other processes.  It will busy wait until more tokens become available.
-            /// </summary>
-            public Builder WithBusyWaitSleepStrategy()
-            {
-                return WithSleepStrategy(BusyWaitSleepStrategyInstance);
-            }
-
             /// <summary>Use a user defined sleep strategy.</summary>
             public Builder WithSleepStrategy(ISleepStrategy sleepStrategy)
             {
@@ -85,15 +77,5 @@ namespace Esendex.TokenBucket
         }
 
         private static readonly ISleepStrategy YieldingSleepStrategyInstance = new YieldingSleepStrategy();
-
-        private class BusyWaitSleepStrategy : ISleepStrategy
-        {
-            public void Sleep()
-            {
-                Thread.SpinWait(1);
-            }
-        }
-
-        private static readonly ISleepStrategy BusyWaitSleepStrategyInstance = new BusyWaitSleepStrategy();
     }
 }
