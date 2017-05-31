@@ -7,34 +7,34 @@ namespace Esendex.TokenBucket.Tests
     {
         private readonly TokenBuckets.Builder _builder = TokenBuckets.Construct();
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void WithNegativeCapacity()
         {
-            _builder.WithCapacity(-1);
+            Assert.That(() => _builder.WithCapacity(-1), Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void WithZeroCapacity()
         {
-            _builder.WithCapacity(0);
+            Assert.That(() => _builder.WithCapacity(0), Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
-        [Test, ExpectedException(typeof (ArgumentNullException))]
+        [Test]
         public void WithNullRefillStrategy()
         {
-            _builder.WithRefillStrategy(null);
+            Assert.That(() => _builder.WithRefillStrategy(null), Throws.InstanceOf<ArgumentNullException>());
         }
 
-        [Test, ExpectedException(typeof (ArgumentNullException))]
+        [Test]
         public void WithNullSleepStrategy()
         {
-            _builder.WithSleepStrategy(null);
+            Assert.That(() => _builder.WithSleepStrategy(null), Throws.InstanceOf<ArgumentNullException>());
         }
 
-        [Test, ExpectedException(typeof (InvalidOperationException))]
+        [Test]
         public void BuildWhenCapacityNotSpecified()
         {
-            _builder.Build();
+            Assert.That(() => _builder.Build(), Throws.InstanceOf<InvalidOperationException>());
         }
     }
 }

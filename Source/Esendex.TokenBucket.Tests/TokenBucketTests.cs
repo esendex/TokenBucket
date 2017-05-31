@@ -21,22 +21,22 @@ namespace Esendex.TokenBucket.Tests
             _bucket = new TokenBucket(Capacity, _refillStrategy, _sleepStrategy.Object);
         }
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void TryConsumeZeroTokens()
         {
-            _bucket.TryConsume(0);
+            Assert.That(() => _bucket.TryConsume(0), Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void TryConsumeNegativeTokens()
         {
-            _bucket.TryConsume(-1);
+            Assert.That(() => _bucket.TryConsume(-1), Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void TryConsumeMoreThanCapacityTokens()
         {
-            _bucket.TryConsume(100);
+            Assert.That(() => _bucket.TryConsume(100), Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace Esendex.TokenBucket.Tests
             Assert.False(_bucket.TryConsume(1));
         }
 
-        [Test, Timeout(ConsumeTimeout)]
+        [Test, MaxTime(ConsumeTimeout)]
         public void ConsumeWhenTokenAvailable()
         {
             _refillStrategy.AddToken();
@@ -87,7 +87,7 @@ namespace Esendex.TokenBucket.Tests
             _sleepStrategy.Verify(s => s.Sleep(), Times.Never());
         }
 
-        [Test, Timeout(ConsumeTimeout)]
+        [Test, MaxTime(ConsumeTimeout)]
         public void ConsumeWhenTokensAvailable()
         {
             const int tokensToConsume = 2;
@@ -97,7 +97,7 @@ namespace Esendex.TokenBucket.Tests
             _sleepStrategy.Verify(s => s.Sleep(), Times.Never());
         }
 
-        [Test, Timeout(ConsumeTimeout)]
+        [Test, MaxTime(ConsumeTimeout)]
         public void ConsumeWhenTokenUnavailable()
         {
             _sleepStrategy
@@ -110,7 +110,7 @@ namespace Esendex.TokenBucket.Tests
             _sleepStrategy.Verify();
         }
 
-        [Test, Timeout(ConsumeTimeout)]
+        [Test, MaxTime(ConsumeTimeout)]
         public void ConsumeWhenTokensUnavailable()
         {
             const int tokensToConsume = 7;
