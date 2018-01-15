@@ -1,6 +1,8 @@
 using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace Esendex.TokenBucket.Tests
 {
