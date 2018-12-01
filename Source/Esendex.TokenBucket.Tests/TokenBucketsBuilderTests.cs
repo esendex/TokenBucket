@@ -7,34 +7,34 @@ namespace Esendex.TokenBucket.Tests
     {
         private readonly TokenBuckets.Builder _builder = TokenBuckets.Construct();
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void WithNegativeCapacity()
         {
-            _builder.WithCapacity(-1);
+            Assert.Throws<ArgumentOutOfRangeException>(() => _builder.WithCapacity(-1));
         }
 
-        [Test, ExpectedException(typeof (ArgumentOutOfRangeException))]
+        [Test]
         public void WithZeroCapacity()
         {
-            _builder.WithCapacity(0);
+            Assert.Throws<ArgumentOutOfRangeException>(() => _builder.WithCapacity(0));
         }
 
-        [Test, ExpectedException(typeof (ArgumentNullException))]
+        [Test]
         public void WithNullRefillStrategy()
         {
-            _builder.WithRefillStrategy(null);
+            Assert.Throws<ArgumentNullException>(() => _builder.WithRefillStrategy(null));
         }
 
-        [Test, ExpectedException(typeof (ArgumentNullException))]
+        [Test]
         public void WithNullSleepStrategy()
         {
-            _builder.WithSleepStrategy(null);
+            Assert.Throws<ArgumentNullException>(() => _builder.WithSleepStrategy(null));
         }
 
-        [Test, ExpectedException(typeof (InvalidOperationException))]
+        [Test]
         public void BuildWhenCapacityNotSpecified()
         {
-            _builder.Build();
+            Assert.Throws<InvalidOperationException>(() => _builder.Build());
         }
     }
 }
