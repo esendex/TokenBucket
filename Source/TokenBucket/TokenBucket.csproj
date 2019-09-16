@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>Esendex.TokenBucket</RootNamespace>
+        <PackageId>Esendex.TokenBucket</PackageId>
+        <PackageVersion>1.0.8</PackageVersion>
+        <Title>TokenBucket</Title>
+        <Authors>esendexdev,bbeck,rosenbjerg</Authors>
+        <Copyright>Copyright 2019</Copyright>
+        <PackageProjectUrl>https://github.com/esendex/TokenBucket</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/esendex/TokenBucket/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/esendex/TokenBucket</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageTags>TokenBucket LeakyBucket FlowControl</PackageTags>
+    </PropertyGroup>
+
+</Project>
