@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{8A0ECBB0-D
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenBucket", "TokenBucket\TokenBucket.csproj", "{5A63AA1E-2933-47AB-B373-4D2D6DAA97C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenBucket.Tests", "TokenBucket.Tests\TokenBucket.Tests.csproj", "{B01CF6A4-136F-42F6-A6B1-E6009C3F840C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{BE64A2D3-42C7-4227-BF40-AAA8990F99C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE64A2D3-42C7-4227-BF40-AAA8990F99C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE64A2D3-42C7-4227-BF40-AAA8990F99C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A63AA1E-2933-47AB-B373-4D2D6DAA97C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A63AA1E-2933-47AB-B373-4D2D6DAA97C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A63AA1E-2933-47AB-B373-4D2D6DAA97C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A63AA1E-2933-47AB-B373-4D2D6DAA97C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01CF6A4-136F-42F6-A6B1-E6009C3F840C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01CF6A4-136F-42F6-A6B1-E6009C3F840C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01CF6A4-136F-42F6-A6B1-E6009C3F840C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01CF6A4-136F-42F6-A6B1-E6009C3F840C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
