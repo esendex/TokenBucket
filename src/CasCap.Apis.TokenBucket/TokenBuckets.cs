@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 
-namespace Esendex.TokenBucket
+namespace CasCap.Apis.TokenBucket
 {
     /// <summary>
     /// Static utility methods pertaining to creating <see cref="ITokenBucket"/> instances.

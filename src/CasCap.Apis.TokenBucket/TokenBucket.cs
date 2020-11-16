@@ -1,6 +1,6 @@
 using System;
 
-namespace Esendex.TokenBucket
+namespace CasCap.Apis.TokenBucket
 {
     /// <summary>
     /// A token bucket implementation that is of a leaky bucket in the sense that it has a finite capacity and any added

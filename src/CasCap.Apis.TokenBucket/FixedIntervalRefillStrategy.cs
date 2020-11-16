@@ -1,6 +1,6 @@
 using System;
 
-namespace Esendex.TokenBucket
+namespace CasCap.Apis.TokenBucket
 {
     /// <summary>
     /// A token bucket refill strategy that will provide N tokens for a token bucket to consume every T units of time.

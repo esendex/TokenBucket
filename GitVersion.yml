@@ -1,0 +1,10 @@
+next-version: 1.0
+mode: MainLine
+branches:
+  master:
+    tag: ''
+  feature:
+    tag: ci
+ignore:
+  sha: []
+merge-message-formats: {}

@@ -1,5 +1,14 @@
-Introduction
-------------
+[azdo-badge]: https://dev.azure.com/f2calv/github/_apis/build/status/f2calv.CasCap.Apis.TokenBucket?branchName=master
+[azdo-url]: https://dev.azure.com/f2calv/github/_build/latest?definitionId=9&branchName=master
+[azdo-coverage-url]: https://img.shields.io/azure-devops/coverage/f2calv/github/9
+[cascap.apis.tokenbucket-badge]: https://img.shields.io/nuget/v/CasCap.Apis.TokenBucket?color=blue
+[cascap.apis.tokenbucket-url]: https://nuget.org/packages/CasCap.Apis.TokenBucket
+
+[![Build Status][azdo-badge]][azdo-url] <!-- ![Code Coverage][azdo-coverage-url] --> [![Nuget][cascap.apis.tokenbucket-badge]][cascap.apis.tokenbucket-url]
+
+
+# Introduction
+
 This library provides an implementation of a token bucket algorithm which is useful for providing rate limited access
 to a portion of code.  The implementation provided is that of a "leaky bucket" in the sense that the bucket has a finite
 capacity and any added tokens that would exceed this capacity will "overflow" out of the bucket and be lost forever.
@@ -8,17 +17,16 @@ In this implementation the rules for refilling the bucket are encapsulated in a 
 to attempting to consume any tokens the refill strategy will be consulted to see how many tokens should be added to the
 bucket
 
-We use [AppVeyor](http://www.appveyor.com/about) for build verification.  [![Build status](https://ci.appveyor.com/api/projects/status/vg8r10d4irxdapd1/branch/master?svg=true)](https://ci.appveyor.com/project/Esendex/tokenbucket/branch/master)
-
 See also:
 
 * [Wikipedia - Token Bucket](http://en.wikipedia.org/wiki/Token_bucket)
 * [Wikipedia - Leaky Bucket](http://en.wikipedia.org/wiki/Leaky_bucket)
 
-This is a port to C# of the original work by [Brandon Beck](https://github.com/bbeck/token-bucket).
+This is an update of the existing [esendex](https://github.com/esendex/TokenBucket) library to now target .NET Standard 2.0 & .NET 5.0.
+The [esendex](https://github.com/esendex/TokenBucket) library was in turn a port to C# of the original work by [Brandon Beck](https://github.com/bbeck/token-bucket).
 
-Usage
------
+## Usage
+
 Using a token bucket is incredibly easy and is best illustrated by an example.  Suppose you have a piece of code that
 polls a website and you would only like to be able to access the site once per second:
 
@@ -63,16 +71,18 @@ while (true) {
 }
 ```
 
-NuGet
------
+## NuGet
+
 Install from NuGet
 
 ```PowerShell
-Install-Package Esendex.TokenBucket
+Install-Package CasCap.Apis.TokenBucket
 ```
 
-License
--------
+## License
+
+Copyright 2020 Alex Vincent
+
 Copyright 2015 Esendex Ltd
 
 Copyright 2012-2014 Brandon Beck
